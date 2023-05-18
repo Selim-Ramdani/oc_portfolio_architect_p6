@@ -1,17 +1,37 @@
-// Get request : Fetch categories
-const getCategories = async () => {
-  const response = await fetch("http://localhost:5678/api/categories");
-  const categories = await response.json(); // Décodage JSON de la réponse
-  console.log(categories); // Utilisation des données décodées
-};
+/* ------------------------------------------
+ *              Localisation des éléments du DOM dans des variables
+ * ------------------------------------------
+ * */
 
-getCategories();
+const gallery = document.querySelector(".gallery");
 
-// Get request : Fetch works
+const BASE_URL = "http://localhost:5678/";
+let arrWorks = [];
+// Fetch works
 const getWorks = async () => {
-  const response = await fetch("http://localhost:5678/api/works");
+  console.log("%c getWorks function launched", "font-weight: bold;");
+  const response = await fetch(`${BASE_URL}api/works`);
   const works = await response.json(); // Décodage JSON de la réponse
-  console.log(works); // Utilisation des données décodées
+  arrWorks.push(...works);
+  console.log(works);
+  createWorksEl(arrWorks);
 };
+function createWorksEl(work) {
+  work.map((item) => {
+    const figure = document.createElement("figure");
+    const imgWorks = item.imageUrl;
+    const titleWorks = item.title;
+    const images = document.createElement("img");
+    const titles = document.createElement("figcaption");
+    titles.innerText = titleWorks;
+    images.src = imgWorks;
+    gallery.appendChild(figure);
+    figure.appendChild(images);
+    figure.appendChild(titles);
+  });
+}
 
-getWorks();
+function init() {
+  getWorks();
+}
+init();
