@@ -4,19 +4,21 @@
  * */
 
 const gallery = document.querySelector(".gallery");
+const filtersDiv = document.querySelector(".filters");
 
 const BASE_URL = "http://localhost:5678/";
 let arrWorks = [];
 // Fetch works
-const getWorks = async () => {
-  console.log("%c getWorks function launched", "font-weight: bold;");
+const getData = async () => {
+  console.log("%c getData function launched", "font-weight: bold;");
   const response = await fetch(`${BASE_URL}api/works`);
   const works = await response.json(); // Décodage JSON de la réponse
   arrWorks.push(...works);
   console.log(works);
-  createWorksEl(arrWorks);
+  displayWorks(arrWorks);
 };
-function createWorksEl(work) {
+
+function displayWorks(work) {
   work.map((item) => {
     const figure = document.createElement("figure");
     const imgWorks = item.imageUrl;
@@ -31,7 +33,58 @@ function createWorksEl(work) {
   });
 }
 
+function displayCategories() {
+  const displayObject = document.createElement("button");
+  displayObject.innerText = "Objets";
+  // displayObject.setAttribute("name", "Objets");
+  console.log(displayObject.value);
+
+  const displayAppartment = document.createElement("button");
+  displayAppartment.innerText = "Appartements";
+
+  const displayHotelRestaurant = document.createElement("button");
+  displayHotelRestaurant.innerText = "Hotels & Restaurants";
+
+  const displayAll = document.createElement("button");
+  displayAll.innerText = "Tout";
+
+  filtersDiv.append(displayObject);
+  filtersDiv.append(displayAppartment);
+  filtersDiv.append(displayHotelRestaurant);
+  filtersDiv.append(displayAll);
+
+  displayObject.addEventListener("click", () => {
+    const filterObjects = arrWorks.filter((arrWorks) => {
+      return arrWorks.categoryId === 1;
+    });
+    gallery.innerText = "";
+    displayWorks(filterObjects);
+  });
+
+  displayAll.addEventListener("click", () => {
+    gallery.innerText = "";
+    displayWorks(arrWorks);
+  });
+
+  displayAppartment.addEventListener("click", () => {
+    const filterAppartments = arrWorks.filter((arrWorks) => {
+      return arrWorks.categoryId === 2;
+    });
+    gallery.innerText = "";
+    displayWorks(filterAppartments);
+  });
+
+  displayHotelRestaurant.addEventListener("click", () => {
+    const filterHotelRestaurant = arrWorks.filter((arrWorks) => {
+      return arrWorks.categoryId === 3;
+    });
+    gallery.innerText = "";
+    displayWorks(filterHotelRestaurant);
+  });
+}
+
 function init() {
-  getWorks();
+  getData();
+  displayCategories();
 }
 init();
