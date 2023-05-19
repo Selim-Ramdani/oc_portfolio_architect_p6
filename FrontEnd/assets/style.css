@@ -125,6 +125,21 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.filters {
+	display: flex;
+}
+
+.filters button {
+	margin-right: 10px;
+	font-size: 14px;
+	border: none;
+	outline: none;
+}
+
+.filters button:hover {
+	cursor: pointer;
+}
 .gallery {
 	width: 100%;
 	display: grid;
