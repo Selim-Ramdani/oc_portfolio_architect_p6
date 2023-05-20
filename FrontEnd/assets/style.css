@@ -216,15 +216,29 @@ li:hover {
 
 .filters {
   display: flex;
+  margin-bottom: 40px;
+  justify-content: center;
 }
 
 .filters button {
+  padding: 8px 20px;
   margin-right: 10px;
-  font-size: 14px;
+  font-size: 15px;
   border: none;
   outline: none;
+  font-family: "Syne";
+  font-weight: 700;
+  color: #1d6154;
+  background-color: #fff;
+  border: 1px solid #1d6154;
+  text-align: center;
+  border-radius: 60px;
 }
 
+.active {
+  color: #fff;
+  background-color: #1d6154;
+}
 .filters button:hover {
   cursor: pointer;
 }

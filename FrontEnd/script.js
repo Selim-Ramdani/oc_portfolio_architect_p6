@@ -5,7 +5,6 @@
 
 const gallery = document.querySelector(".gallery");
 const filtersDiv = document.querySelector(".filters");
-
 const BASE_URL = "http://localhost:5678/";
 let arrWorks = [];
 // Fetch works
@@ -34,6 +33,9 @@ function displayWorks(work) {
 }
 
 function displayCategories() {
+  const displayAll = document.createElement("button");
+  displayAll.innerText = "Tous";
+
   const displayObject = document.createElement("button");
   displayObject.innerText = "Objets";
   // displayObject.setAttribute("name", "Objets");
@@ -45,13 +47,15 @@ function displayCategories() {
   const displayHotelRestaurant = document.createElement("button");
   displayHotelRestaurant.innerText = "Hotels & Restaurants";
 
-  const displayAll = document.createElement("button");
-  displayAll.innerText = "Tout";
-
+  filtersDiv.append(displayAll);
   filtersDiv.append(displayObject);
   filtersDiv.append(displayAppartment);
   filtersDiv.append(displayHotelRestaurant);
-  filtersDiv.append(displayAll);
+
+  displayAll.addEventListener("click", () => {
+    gallery.innerText = "";
+    displayWorks(arrWorks);
+  });
 
   displayObject.addEventListener("click", () => {
     const filterObjects = arrWorks.filter((arrWorks) => {
@@ -59,11 +63,6 @@ function displayCategories() {
     });
     gallery.innerText = "";
     displayWorks(filterObjects);
-  });
-
-  displayAll.addEventListener("click", () => {
-    gallery.innerText = "";
-    displayWorks(arrWorks);
   });
 
   displayAppartment.addEventListener("click", () => {
