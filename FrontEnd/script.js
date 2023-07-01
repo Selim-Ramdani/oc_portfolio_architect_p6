@@ -1,6 +1,6 @@
+import { URL } from "./js/api.js";
 const gallery = document.querySelector(".gallery");
 const filtersDiv = document.querySelector(".filters");
-const BASE_URL = "http://localhost:5678/api";
 let arrWorks = [];
 let arrCategories = [];
 
@@ -8,7 +8,7 @@ const isLogged = sessionStorage.getItem("token") || null;
 // Fetch works
 const getData = async () => {
   console.log("%c getData function launched", "font-weight: bold;");
-  const response = await fetch(`${BASE_URL}/works`);
+  const response = await fetch(`${URL}/works`);
   const works = await response.json(); // Décodage JSON de la réponse
   arrWorks.push(...works);
   console.log(works);
@@ -17,7 +17,7 @@ const getData = async () => {
 };
 
 const getCategories = async () => {
-  await fetch(`${BASE_URL}/categories`)
+  await fetch(`${URL}/categories`)
     .then((response) => response.json())
     .then((data) => arrCategories.push(...data));
 };

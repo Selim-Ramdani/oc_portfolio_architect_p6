@@ -1,5 +1,5 @@
+import { URL } from "./api.js";
 const form = document.getElementById("form");
-const BASE_URL = "http://localhost:5678/api";
 let obj;
 const error = document.getElementById("error");
 form.addEventListener("submit", (e) => {
@@ -9,7 +9,7 @@ form.addEventListener("submit", (e) => {
   const payload = new URLSearchParams(prePayload);
   console.log([...payload]);
 
-  fetch(`${BASE_URL}/users/login`, {
+  fetch(`${URL}/users/login`, {
     method: "POST",
     body: payload,
   })
