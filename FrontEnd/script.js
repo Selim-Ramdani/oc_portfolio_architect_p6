@@ -133,5 +133,7 @@ const init = async () => {
 };
 init();
 
-// if (isLogged !== null) {
-// }
+if (isLogged !== null) {
+  console.log("connecté");
+  document.getElementById("login").innerText = "Déconnexion";
+}

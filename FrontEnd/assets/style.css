@@ -374,3 +374,11 @@ footer nav ul {
   font-size: 30px;
   font-weight: 700;
 }
+
+#error {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #b90000;
+  font-size: 16px;
+  font-weight: 600;
+}

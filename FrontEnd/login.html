@@ -31,12 +31,13 @@
     <div class="login-container">
       <section id="login">
         <h2>Log In</h2>
-        <form>
+        <form id="form">
           <label for="email">E-mail</label>
           <input type="email" name="email" id="email" />
           <label for="password">Mot de passe</label>
           <input type="password" name="password" id="password" />
           <input type="submit" value="Se connecter" />
+          <p id="error"></p>
         </form>
         <a href="#">Mot de passe oublié ?</a>
       </section>
@@ -49,5 +50,7 @@
         </ul>
       </nav>
     </footer>
+
+    <script src="js/authentification.js"></script>
   </body>
 </html>
