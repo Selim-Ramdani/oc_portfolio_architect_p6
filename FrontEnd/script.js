@@ -1,13 +1,25 @@
 import { URL } from "./js/api.js";
 const gallery = document.querySelector(".gallery");
 const filtersDiv = document.querySelector(".filters");
+
 let arrWorks = [];
 let arrCategories = [];
+const isLogged = JSON.parse(sessionStorage.getItem("user")) || null;
 
-const isLogged = sessionStorage.getItem("token") || null;
+// const isLogged = sessionStorage.getItem("token") || null;
+const loginEl = document.getElementById("login");
+
+const blocAdmin = document.getElementById("bloc_admin");
+const editBtn = document.createElement("span");
+editBtn.className = "edit_btn";
+
+const modalEl = document.createElement("div");
+modalEl.className = "modal_container";
+
+blocAdmin.appendChild(editBtn);
 // Fetch works
-const getData = async () => {
-  console.log("%c getData function launched", "font-weight: bold;");
+const getWorks = async () => {
+  console.log("%c getWorks function launched", "font-weight: bold;");
   const response = await fetch(`${URL}/works`);
   const works = await response.json(); // Décodage JSON de la réponse
   arrWorks.push(...works);
@@ -126,14 +138,22 @@ const handleFilters = (data) => {
 };
 
 const init = async () => {
-  await getData();
+  await getWorks();
   await getCategories();
   console.log(arrCategories);
   handleFilters(arrCategories);
 };
 init();
 
-if (isLogged !== null) {
-  console.log("connecté");
-  document.getElementById("login").innerText = "Déconnexion";
+let getToken = sessionStorage.getItem("user");
+if (getToken != null) {
+  loginEl.textContent = "déconnexion";
+}
+loginEl.addEventListener("click", function () {
+  sessionStorage.removeItem("user");
+  window.location.reload();
+});
+
+if (isLogged !== null && isLogged.userId === 1) {
+  // user with id 1 is connected
 }
