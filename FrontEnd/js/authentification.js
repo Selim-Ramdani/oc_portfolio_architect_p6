@@ -1,4 +1,4 @@
-import { URL } from "./api.js";
+import { urlApi } from "./api.js";
 const form = document.getElementById("form");
 let obj;
 const error = document.getElementById("error");
@@ -9,7 +9,7 @@ const login = async (data) => {
     password: data.get("password"),
   };
 
-  return await fetch(`${URL}/users/login`, {
+  return await fetch(`${urlApi}/users/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(user),
@@ -34,25 +34,6 @@ form.addEventListener("submit", async (e) => {
 
   if (response.status === 200) {
     sessionStorage.setItem("user", JSON.stringify(user));
-    window.location.assign("/FrontEnd/index.html");
+    window.location.assign("/index.html");
   }
-
-  //   fetch(`${URL}/users/login`, {
-  //     method: "POST",
-  //     body: payload,
-  //   })
-  //     .then((res) => {
-  //       if (res.status === 401 || res.status === 404) {
-  //         error.innerText = "Erreur dans l’identifiant ou le mot de passe !";
-  //         setTimeout(() => {
-  //           error.innerText = "";
-  //         }, 3000);
-  //         return null;
-  //       } else {
-  //         return res.json();
-  //       }
-  //     })
-  //     .then((data) => (obj = data))
-  //     .then(() => sessionStorage.setItem("token", JSON.stringify(obj.token)))
-  //     .catch((err) => console.log(err));
 });
