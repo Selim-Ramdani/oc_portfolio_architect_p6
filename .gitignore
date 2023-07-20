@@ -3,3 +3,4 @@ api.js
 OC-Projects.code-workspace
 /Backend
 .vscode
+node_modules
