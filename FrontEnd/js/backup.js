@@ -15,30 +15,17 @@ const blocAdmin = document.getElementById("blocAdmin");
 const modalEl = document.createElement("div");
 modalEl.className = "modal_container";
 
+// Fetch works
 
-/** -------------------- getWorks
- * @return {Promise}
- * GET request qui permet de récupérer les Works du projet
- * J'enregistre la response du Fetch et crée une variable "works" de cette response que je décode en JSON.
- * Je push ensuite ces works dans mon tableau arrWorks, ma source de vérité.
- * 
-*/
 const getWorks = async () => {
   console.log("%c getWorks function launched", "font-weight: bold;");
   const response = await fetch(`${urlApi}/works`);
-  console.log("Response: ", response);
   const works = await response.json(); // Décodage JSON de la réponse
-  console.log("Works: ", works);
   arrWorks.push(...works);
   console.log(works);
 };
 
-/**
- * @return {Promise}
- * GET request qui permet de récupérer 
- */
 const getCategories = async () => {
-  console.log("%c getCategories function launched", "font-weight: bold;");
   await fetch(`${urlApi}/categories`)
     .then((response) => response.json())
     .then((data) => arrCategories.push(...data));
@@ -159,7 +146,7 @@ init();
 
 let getToken = sessionStorage.getItem("user");
 if (getToken != null) {
-  loginEl.textContent = "logout";
+  loginEl.textContent = "déconnexion";
 }
 loginEl.addEventListener("click", function () {
   sessionStorage.removeItem("user");
@@ -193,11 +180,11 @@ const deleteWork = async (id) => {
   });
 };
 
-// const updateWorksUI = async () => {
-//   const arrWorks = [];
-//   await displayWorks(arrWorks);
-//   await displayGalleryModal();
-// };
+const updateWorksUI = async () => {
+  const arrWorks = [];
+  await displayWorks(arrWorks);
+  await displayGalleryModal();
+};
 
 const displayGalleryModal = async () => {
   for (let i = 0; i < arrWorks.length; i++) {
@@ -289,7 +276,7 @@ uploadInputEl.addEventListener("change", () => {
   const imageUrlEl = document.getElementById("objectUrlImg");
   imageUrlEl.src=url;
   const iconImage = document.getElementById("iconImage").style.display="none";
-  const addImgEl = document.getElementById("addImg").style.display="none";
+  const addImgEl = document.querySelector(".addImg").style.display="none";
   const typeImgEl = document.querySelector(".typeImg").style.display="none";
 
   const formData = new FormData();
@@ -298,16 +285,14 @@ uploadInputEl.addEventListener("change", () => {
 })
 
 const addWorkForm = document.getElementById('uploadImgForm');
+ 
 addWorkForm.addEventListener('submit', function (e) {
     e.preventDefault();
  
-    const formData = new FormData(addWorkForm);
+    const formData = new FormData(formEl);
     console.log(formData);
     addWork(formData);
-    addWorkForm.reset();
 });
-
-// Add Work Function
 
 const addWork = async (formData) => {
 
@@ -330,6 +315,7 @@ const addWork = async (formData) => {
             document.querySelector("#galleryModal").innerHTML = '';
             document.querySelector(".gallery").innerHTML = "";
             arrWorks.push(work);
+            console.log(arrWorks);
             closeAddPictureModal();
             displayGalleryModal(arrWorks);
             displayWorks(arrWorks);

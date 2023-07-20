@@ -95,12 +95,12 @@
               <form id="uploadImgForm">
                 <div class="addBox">
                   <div class="image">
-                    <img src="" alt="" id="objectUrlImg">
+                    <img alt="" id="objectUrlImg">
                     <i class="fa-regular fa-image" id="iconImage"></i>	
                   </div>
                   <input type="file" name="image"  accept="/image*" id="uploadInput" required>				
                 </input>
-                  <button class="addImg" accept=".jpg, .png">+ Ajouter photo</button>
+                  <button id="addImg" accept=".jpg, .png">+ Ajouter photo</button>
                   <p class="typeImg">jpg, png : 4mo max</p>
                   <label id="errorFormat"></label>
                   <label id="errorSize"></label>
@@ -154,9 +154,7 @@
     </nav>
   </footer>
 
-  <script type="module" src="./js/services.js"></script>
   <script type="module" src="script.js"></script>
-  <script type="module" src="js/edit.js"></script>
   <script type="module" src="./js/components/adminPannel.js"></script>
 </body>
 

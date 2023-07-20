@@ -137,7 +137,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  margin: 50px 0;
+  margin: 40px 0;
 }
 section {
   margin: 50px 0;
@@ -388,24 +388,50 @@ footer nav ul {
   font-weight: 600;
 }
 
-/* MODAL */
+/* ADMIN PANNEL */
 
-#admin_pannel {
+#adminPannel {
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  padding: 1rem 0;
+  padding: 0.4rem 0;
   background-color: #111;
-  opacity: 0.9;
 }
 
-#admin_pannel-content {
+#adminPannel-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  padding: 0.2rem;
   font-size: 14px;
   color: #fff;
   font-family: "Work Sans", sans-serif;
 }
+
+#editionMode {
+  margin-right: 2vw;
+  cursor: pointer;
+}
+
+#editionMode i {
+  margin-right: 1vw;
+}
+
+#publishChanges {
+  background-color: #fff;
+  border: none;
+  color: #000;
+  width: 216px;
+  height: 34px;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+
+/* MODAL */
 
 #blocAdmin {
   margin-bottom: 1em;
@@ -683,14 +709,15 @@ form input {
 }*/
 
 #uploadImgForm {
-  width: 420px;
+  /* width: 420px;
   height: 170px;
   border-radius: 3px;
-  margin-bottom: 12px;
-  
-
+  margin-bottom: 12px; */
 }
-.addImg{
+#addImg{
+  padding: 10px;
+  border-radius: 50px;
+  margin-bottom: 5px;
   color: #306685;
   background-color: #CBD6DC;
   border: 1px solid #306685;
@@ -698,8 +725,6 @@ form input {
 
 .addBox {
   background-color: #E8F1F6;
-  width: 420px;
-  height: 200px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -709,13 +734,21 @@ form input {
 }
 
 .image {
+  position: relative;
   font-size: 6em;
   color: #B9C5CC;
   
 }
 #objectUrlImg {
-  width: 100%; 
+  width: 270px;
+  height: 170px;
   object-fit: cover;
+}
+
+#iconImage {
+  position: absolute;
+  top: 4.5vh;
+  right: 7vw;
 }
 
 #uploadInput {

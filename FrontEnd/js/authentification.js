@@ -34,6 +34,6 @@ form.addEventListener("submit", async (e) => {
 
   if (response.status === 200) {
     sessionStorage.setItem("user", JSON.stringify(user));
-    window.location.assign("/index.html");
+    window.location.assign("./index.html");
   }
 });
