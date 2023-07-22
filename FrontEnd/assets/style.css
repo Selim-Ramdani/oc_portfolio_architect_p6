@@ -135,6 +135,7 @@ body {
   font-size: 14px;
 }
 header {
+  padding-top: 45px;
   display: flex;
   justify-content: space-between;
   margin: 40px 0;
@@ -262,6 +263,8 @@ li:hover {
 
 .gallery img {
   width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
 #contact {
   width: 50%;
@@ -740,7 +743,6 @@ form input {
   
 }
 #objectUrlImg {
-  width: 270px;
   height: 170px;
   object-fit: cover;
 }
