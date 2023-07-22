@@ -95,36 +95,33 @@
               <form id="uploadImgForm">
                 <div class="addBox">
                   <div class="image">
-                    <img alt="" id="objectUrlImg">
-                    <i class="fa-regular fa-image" id="iconImage"></i>	
+                    <i class="fa-regular fa-image" id="iconImage"></i>
                   </div>
-                  <input type="file" name="image"  accept="/image*" id="uploadInput" required>				
-                </input>
-                  <button id="addImg" accept=".jpg, .png">+ Ajouter photo</button>
+                  <input type="file" name="image" accept="image/*" id="uploadInput" required>
+                  <button id="addImg">+ Ajouter photo</button>
                   <p class="typeImg">jpg, png : 4mo max</p>
                   <label id="errorFormat"></label>
                   <label id="errorSize"></label>
                 </div>
                 <div class='bottomForm'>
-                <label>Titre</label>
-                <input name="title" class="imageTitle" type="text" required>
-                <label>Catégorie</label>
-                <select name="category" id="modalCategory" required>
-                  <option value="0"></option>
-                  <option value="1">Objets</option>
-                  <option value="2">Appartements</option>
-                  <option value="3">Hôtel & restaurants</option>
-                </select>
-                <div class="modal2Container">
-                  <button class="uploadImgBtn" type="submit">Valider</button>
+                  <label>Titre</label>
+                  <input name="title" class="imageTitle" type="text" required>
+                  <label>Catégorie</label>
+                  <!-- Les catégories ici -->
+                  <select name="category" id="modalCategory" required>
+                    <option value="0" disabled selected>&nbsp;</option>
+                    <option value="1">Objets</option>
+                    <option value="2">Appartements</option>
+                    <option value="3">Hôtel & restaurants</option>
+                  </select>
+                  <div class="modal2Container">
+                    <button class="uploadImgBtn" type="submit">Valider</button>
+                  </div>
                 </div>
-              </div>
               </form>
             </div>
           </div>
         </div>
-      </div>
-      </div>
       </div>
       <div class="filters"></div>
       <div class="gallery">
